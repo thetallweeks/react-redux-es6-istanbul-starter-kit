@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha",
-    "coverage": "babel-node ./node_modules/.bin/isparta cover _mocha"
+    "coverage": "babel-node ./node_modules/.bin/isparta cover _mocha --include-all-sources true"
   },
   "repository": {
     "type": "git",
