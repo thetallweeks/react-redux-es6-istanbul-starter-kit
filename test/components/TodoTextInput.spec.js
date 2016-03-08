@@ -1,18 +1,11 @@
-import chai from 'chai';
-let expect = chai.expect;
-
-import sinon from 'sinon';
-import sinonChai from 'sinon-chai'
-
-chai.use(sinonChai);
-
+import expect from 'expect'
 import React from 'react'
 import TestUtils from 'react-addons-test-utils'
 import TodoTextInput from '../../src/components/TodoTextInput'
 
 function setup(propOverrides) {
   const props = Object.assign({
-    onSave: sinon.spy(),
+    onSave: expect.createSpy(),
     text: 'Use Redux',
     placeholder: 'What needs to be done?',
     editing: false,
@@ -40,51 +33,51 @@ describe('components', () => {
   describe('TodoTextInput', () => {
     it('should render correctly', () => {
       const { output } = setup()
-      expect(output.props.placeholder).to.equal('What needs to be done?')
-      expect(output.props.value).to.equal('Use Redux')
-      expect(output.props.className).to.equal('')
+      expect(output.props.placeholder).toEqual('What needs to be done?')
+      expect(output.props.value).toEqual('Use Redux')
+      expect(output.props.className).toEqual('')
     })
 
     it('should render correctly when editing=true', () => {
       const { output } = setup({ editing: true })
-      expect(output.props.className).to.equal('edit')
+      expect(output.props.className).toEqual('edit')
     })
 
     it('should render correctly when newTodo=true', () => {
       const { output } = setup({ newTodo: true })
-      expect(output.props.className).to.equal('new-todo')
+      expect(output.props.className).toEqual('new-todo')
     })
 
     it('should update value on change', () => {
       const { output, renderer } = setup()
       output.props.onChange({ target: { value: 'Use Radox' } })
       const updated = renderer.getRenderOutput()
-      expect(updated.props.value).to.equal('Use Radox')
+      expect(updated.props.value).toEqual('Use Radox')
     })
 
     it('should call onSave on return key press', () => {
       const { output, props } = setup()
       output.props.onKeyDown({ which: 13, target: { value: 'Use Redux' } })
-      expect(props.onSave).to.have.been.calledWith('Use Redux')
+      expect(props.onSave).toHaveBeenCalledWith('Use Redux')
     })
 
     it('should reset state on return key press if newTodo', () => {
       const { output, renderer } = setup({ newTodo: true })
       output.props.onKeyDown({ which: 13, target: { value: 'Use Redux' } })
       const updated = renderer.getRenderOutput()
-      expect(updated.props.value).to.equal('')
+      expect(updated.props.value).toEqual('')
     })
 
     it('should call onSave on blur', () => {
       const { output, props } = setup()
       output.props.onBlur({ target: { value: 'Use Redux' } })
-      expect(props.onSave).to.have.been.calledWith('Use Redux')
+      expect(props.onSave).toHaveBeenCalledWith('Use Redux')
     })
 
     it('shouldnt call onSave on blur if newTodo', () => {
       const { output, props } = setup({ newTodo: true })
       output.props.onBlur({ target: { value: 'Use Redux' } })
-      expect(props.onSave.callCount).to.equal(0)
+      expect(props.onSave.calls.length).toBe(0)
     })
   })
 })
