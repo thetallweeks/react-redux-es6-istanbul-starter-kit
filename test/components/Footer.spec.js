@@ -1,7 +1,7 @@
 import expect from 'expect'
 import React from 'react'
 import TestUtils from 'react-addons-test-utils'
-import Footer from '../../src/components/Footer'
+import Footer from '../../src/components/Footer.jsx'
 import { SHOW_ALL, SHOW_ACTIVE } from '../../src/constants/TodoFilters'
 
 function setup(propOverrides) {
@@ -33,7 +33,7 @@ function getTextContent(elem) {
   }, '')
 }
 
-describe('components', () => {
+xdescribe('components', () => {
   describe('Footer', () => {
     it('should render container', () => {
       const { output } = setup()

@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react'
-import TodoItem from './TodoItem'
-import Footer from './Footer'
+import TodoItem from './TodoItem.jsx'
+import Footer from './Footer.jsx'
 import { SHOW_ALL, SHOW_COMPLETED, SHOW_ACTIVE } from '../constants/TodoFilters'
 
 const TODO_FILTERS = {

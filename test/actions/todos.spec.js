@@ -2,7 +2,7 @@ import expect from 'expect'
 import * as types from '../../src/constants/ActionTypes'
 import * as actions from '../../src/actions'
 
-describe('todo actions', () => {
+xdescribe('todo actions', () => {
   it('addTodo should create ADD_TODO action', () => {
     expect(actions.addTodo('Use Redux')).toEqual({
       type: types.ADD_TODO,

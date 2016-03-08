@@ -6,7 +6,8 @@
   "scripts": {
     "build": "browserify src/index.js --outfile src/bundle.js",
     "test": "mocha",
-    "coverage": "babel-node ./node_modules/.bin/isparta cover _mocha --include-all-sources true"
+    "coverage": "babel-node ./node_modules/.bin/isparta cover _mocha",
+    "coverage-jsx": "gulp coverage"
   },
   "repository": {
     "type": "git",
